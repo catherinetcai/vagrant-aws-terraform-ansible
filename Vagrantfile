@@ -20,6 +20,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :terraform do |terraform|
   end
 
+  # Allow AWS credentials to be passed through
+  config.ssh.forward_env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION"]
+
   config.vm.provision "ansible_local" do |ansible|
     ansible.verbose = 'vvvv'
     ansible.playbook = "provision/playbook.yml"

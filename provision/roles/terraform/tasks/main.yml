@@ -1,10 +1,10 @@
 ---
-- name: Download Unzip
+- name: install unzip
   apt:
     name: unzip
     update_cache: yes
   become: true
-- name: Download Terraform
+- name: download terraform
   get_url: 
     url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
     dest: "/usr/local/src/terraform_{{ terraform_version }}_linux_amd64.zip" 
@@ -12,7 +12,7 @@
     group: "{{ vagrant_group }}"
     mode: 0700
   become: true
-- name: Extract and install Terraform
+- name: install terraform
   unarchive: 
     src: "/usr/local/src/terraform_{{ terraform_version }}_linux_amd64.zip"
     dest: "/usr/local/bin/"

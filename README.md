@@ -16,4 +16,6 @@ Installs:
 
 Default user: ubuntu
 
-### 
+### Allowing AWS ENV passthrough
+
+This is configured to allow for AWS ENV passthrough. Set your aws credentials up via env vars and they'll be allowed through.
