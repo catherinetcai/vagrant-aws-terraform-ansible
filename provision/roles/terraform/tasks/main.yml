@@ -1,0 +1,22 @@
+---
+- name: Download Unzip
+  apt:
+    name: unzip
+    update_cache: yes
+  become: true
+- name: Download Terraform
+  get_url: 
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: "/usr/local/src/terraform_{{ terraform_version }}_linux_amd64.zip" 
+    owner: "{{ vagrant_user }}"
+    group: "{{ vagrant_group }}"
+    mode: 0700
+  become: true
+- name: Extract and install Terraform
+  unarchive: 
+    src: "/usr/local/src/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: "/usr/local/bin/"
+    copy: no
+    owner: "{{ vagrant_user }}"
+    group: "{{ vagrant_group }}"
+  become: true

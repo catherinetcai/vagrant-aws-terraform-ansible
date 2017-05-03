@@ -1,0 +1,5 @@
+---
+vagrant_user: ubuntu
+vagrant_group: ubuntu
+
+terraform_version: 0.9.4

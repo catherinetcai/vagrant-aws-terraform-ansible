@@ -1,0 +1,12 @@
+---
+- name: Install Python
+  apt:
+    name: python3-pip
+    update_cache: yes
+  become: true 
+- name: Install AWS Cli
+  pip:
+    name: awscli
+    umask: '0022'
+    executable: pip3
+  become: "{{ vagrant_user }}"
